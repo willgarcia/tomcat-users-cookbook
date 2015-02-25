@@ -19,6 +19,7 @@ class Chef
       def create_user
         template new_resource.config do
           source 'tomcat-users.xml.erb'
+          cookbook 'tomcat-users'
           owner 'root'
           group 'root'
           mode '0644'
