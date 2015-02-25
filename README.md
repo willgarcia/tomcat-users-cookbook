@@ -1,6 +1,20 @@
 tomcat-users Cookbook
-==============================
+=====================
 
-This cookbook is for tomcat(-*cookbooks) HATERS only, like me.
+Adding a new user
+-----------------
 
-See https://github.com/opscode-cookbooks/tomcat#managing-tomcat-users for details
+Create a tomcat user with associated roles:
+
+```ruby
+tomcat_user 'hello' do
+  tomcat_config '/tomcat/path/to/tomcat-users.xml'
+  roles [ 
+    { :id => "user1", :password => "pwd1", :roles => ["role1", "role2"] }
+    { :id => "user2", :password => "pwd2", :roles => ["role1"] }
+  ]
+
+  action :create
+end
+```
+

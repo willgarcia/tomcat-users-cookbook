@@ -16,10 +16,12 @@
   limitations under the License.
 -->
 <tomcat-users>
-<% @roles.each do |role| -%>
-<role rolename="<%= role %>" />
-<% end -%>
-<% @users.each do |user| -%>
-<user username="<%= user['id'] %>" password="<%= user['password'] %>" roles="<%= user['roles'].join(', ') %>" />
-<% end -%>
+    <% @roles.each do |role_data| -%>
+
+        <% role_data.roles.each do |rolename| -%>
+        <role rolename="<%= rolename %>" />
+        <% end -%>
+        <user username="<%= role_data.id %>" password="<%= role_data.password %>" roles="<%= role_data.roles.join(', ') %>" />
+
+    <% end -%>
 </tomcat-users>
